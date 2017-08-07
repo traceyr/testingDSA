@@ -1,7 +1,6 @@
 'use strict';
 
 //Stack class: LIFO
-//TODO: Implement this with Class ES6
 
 function Stack() {
   let items = [];
@@ -52,3 +51,30 @@ function divideByTwo (num){
 console.log(divideByTwo(233));
 console.log(divideByTwo(10));
 console.log(divideByTwo(1000));
+
+//decimal to any base
+
+function anyBase (num, base){
+  let remStack = new Stack(),
+    rem,
+    binarySearch = '',
+    digits = '0123456789ABCDEF';
+
+  while (num > 0){
+    rem = Math.floor(num % base);
+    remStack.pushItem(rem);
+    num = Math.floor(num / base);
+  }
+  //To see backwards
+  remStack.print();
+
+  while(!remStack.isEmpty()){
+    binarySearch += digits[remStack.popItem().toString()];
+  }
+  console.log(binarySearch);
+  return binarySearch;
+}
+
+console.log(anyBase(100345, 2));
+console.log(anyBase(100345, 8));
+console.log(anyBase(100345, 16));
