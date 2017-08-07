@@ -1,5 +1,8 @@
 'use strict';
 
+//Stack class: LIFO
+//TODO: Implement this with Class ES6
+
 function Stack() {
   let items = [];
   this.pushItem = (ele) => {
@@ -24,3 +27,28 @@ function Stack() {
     console.log(items.toString());
   };
 }
+
+//Decimal To Binary
+
+function divideByTwo (num){
+  let remStack = new Stack(),
+    rem,
+    binarySearch = '';
+
+  while (num > 0){
+    rem = Math.floor(num % 2);
+    remStack.pushItem(rem);
+    num = Math.floor(num / 2);
+  }
+  //Me checking to see if backwards
+  remStack.print();
+
+  while(!remStack.isEmpty()){
+    binarySearch += remStack.popItem().toString();
+  }
+  return binarySearch;
+}
+
+console.log(divideByTwo(233));
+console.log(divideByTwo(10));
+console.log(divideByTwo(1000));
