@@ -75,6 +75,9 @@ function anyBase (num, base){
   return binarySearch;
 }
 
+//Binary
 console.log(anyBase(100345, 2));
+//Octagonal
 console.log(anyBase(100345, 8));
+//Hexidecemial
 console.log(anyBase(100345, 16));
