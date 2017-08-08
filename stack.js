@@ -81,3 +81,27 @@ console.log(anyBase(100345, 2));
 console.log(anyBase(100345, 8));
 //Hexidecemial
 console.log(anyBase(100345, 16));
+
+//Balanced Parenthesis
+
+function balancedParenthesis(paraString){
+  let opening = ['(', '{', '['],
+    closing = [')', '}', ']'],
+    temp,
+    newStack = new Stack(),
+    paraArray = paraString.split(''),
+    endResults = true;
+    //check here to see if paraArray has anything in it
+  paraArray.map(function(bracket){
+    if(opening.includes(bracket)) newStack.pushItem(bracket);
+    if(closing.includes(bracket)){
+      temp = newStack.popItem();
+      if(opening.indexOf(temp) !== closing.indexOf(bracket)) endResults = false;
+    }
+  });
+  if(!newStack.isEmpty()) endResults = false;
+  return endResults;
+}
+
+console.log(balancedParenthesis('{{([][])}()}'));
+console.log(balancedParenthesis('[{()]'));
